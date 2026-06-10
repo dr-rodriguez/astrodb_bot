@@ -1,0 +1,7 @@
+source_name,ra_deg,dec_deg,reference,stream
+MockSource_001,45.123,-18.456,Shipp2019,Turranburra
+MockSource_002,273.789,-75.012,Koposov2023,Orphan-Chenab
+MockSource_003,285.456,-30.789,Vasiliev2021,Sagittarius
+MockSource_004,346.123,2.345,Grillmair2022,M2
+MockSource_005,341.678,5.901,Shipp2020,Palomar 13
+MockSource_006,36.234,-34.567,Li2021,Cetus-Palca

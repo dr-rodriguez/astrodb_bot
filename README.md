@@ -13,6 +13,8 @@ To install this in another agent, you can copy the `skills/` directory to whatev
 - [`astrodb-generate-schema`](skills/astrodb-generate-schema/SKILL.md) — creates a Felis-format schema.yaml file using outputs of previous skills
 - [`astrodb-create-db`](skills/astrodb-create-db/SKILL.md) — Create an empty SQLite AstroDB database from a Felis-validated schema.yaml, following the astrodb-template-db file structure.
 - [`astrodb-website`](skills/astrodb-website/SKILL.md) — Sets up a FastAPI web interface ([astrodb-web](https://github.com/astrodbtoolkit/astrodb-web)) to browse and visualize an AstroDB SQLite database.
+- [`astrodb-ingest-publication`](skills/astrodb-ingest-publication/SKILL.md) — ingests publications into the Publications table from a DOI/bibcode or a table of references, and backfills missing bibcode/DOI/description for existing references.
+
 
 ## Requirements
 
