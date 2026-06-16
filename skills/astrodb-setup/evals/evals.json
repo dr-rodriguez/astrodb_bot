@@ -27,13 +27,13 @@
     },
     {
       "id": 2,
-      "prompt": "I made my repo from the template, it's at https://github.com/jdoe/bd-survey-db . Call the database BdSurvey and get it set up.",
-      "expected_output": "Clones https://github.com/jdoe/bd-survey-db right away, without first asking where to put it or what working directory/folder to use, verifies the cloned repo has the template structure (a data/ directory, a database.toml, and a schema.yaml), updates database.toml so db_name is 'BdSurvey', and in the final summary tells the user the cloned repo directory is now their project directory for next steps. Does not handle a data file.",
+      "prompt": "I made my repo from the template, it's at https://github.com/kelle/test-astrodb . Call the database BdSurvey and get it set up.",
+      "expected_output": "Clones https://github.com/kelle/test-astrodb right away without asking where to put it, verifies structure, updates db_name to 'BdSurvey', and tells the user the cloned directory is their project directory. At the end — after setup is complete — notes the repo/database name mismatch (test-astrodb vs BdSurvey), asks if they want to rename the repo on GitHub, and offers to run 'git remote set-url origin' with the new URL once they do. Optionally offers to rename the local directory too. Does not raise the mismatch before or during cloning.",
       "files": [],
       "assertions": [
         {
           "id": "eval2_clones_repo",
-          "text": "Clones the provided repo URL (https://github.com/jdoe/bd-survey-db)"
+          "text": "Clones the provided repo URL (https://github.com/kelle/test-astrodb)"
         },
         {
           "id": "eval2_no_directory_question",
@@ -50,6 +50,18 @@
         {
           "id": "eval2_mentions_project_dir_after",
           "text": "In the wrap-up, tells the user the cloned repo directory is now their project directory for the next steps"
+        },
+        {
+          "id": "eval2_mismatch_raised_at_end",
+          "text": "After setup is complete, notes the repo/database name mismatch (test-astrodb vs BdSurvey) and asks if the user wants to rename the repo"
+        },
+        {
+          "id": "eval2_offers_remote_fix",
+          "text": "Offers to run 'git remote set-url origin' with the new URL once the user renames the repo on GitHub"
+        },
+        {
+          "id": "eval2_no_mismatch_before_clone",
+          "text": "Does not raise the name mismatch before or during cloning — only raises it at the end"
         },
         {
           "id": "eval2_no_datafile",
@@ -111,8 +123,8 @@
     },
     {
       "id": 5,
-      "prompt": "Here's my repo for a new astrodb: https://github.com/jdoe/exoplanet-survey . Can you set it up?",
-      "expected_output": "Clones https://github.com/jdoe/exoplanet-survey right away without asking where to put it or what working directory/folder to use, asks for a database name (since none was given), verifies the template structure, sets db_name accordingly, and only in the final wrap-up tells the user the cloned repo directory is now their project directory for next steps.",
+      "prompt": "Here's my repo for a new astrodb: https://github.com/kelle/test-astrodb . Can you set it up?",
+      "expected_output": "Clones https://github.com/kelle/test-astrodb right away without asking where to put it or what working directory/folder to use, verifies the template structure, then asks for a database name (since none was given). When asking, suggests the user consider naming the database to match the repo (test-astrodb / TestAstrodb) or notes that if they pick a different name they may want to rename the repo. Sets db_name once the name is provided, and in the final wrap-up tells the user the cloned repo directory is now their project directory for next steps.",
       "files": [],
       "assertions": [
         {
@@ -121,11 +133,15 @@
         },
         {
           "id": "eval5_clones_repo",
-          "text": "Clones https://github.com/jdoe/exoplanet-survey"
+          "text": "Clones https://github.com/kelle/test-astrodb"
         },
         {
           "id": "eval5_asks_db_name",
           "text": "Asks the user for a database name, since none was provided in the prompt"
+        },
+        {
+          "id": "eval5_suggests_name_alignment",
+          "text": "When asking for the database name, suggests aligning it with the repo name (test-astrodb) or notes the option to rename the repo to match whatever name they choose"
         },
         {
           "id": "eval5_mentions_project_dir_after",

@@ -40,7 +40,7 @@ to — cleaner than forking or copying files by hand.
 
 The same-name suggestion is a nice-to-have, not a gate: if the user already made their repo under a
 different name, or gives you both the database name and repo URL in one message, just take both and move
-on.
+on. Don't mention the mismatch upfront — wait until Step 5 (after setup is complete) to raise it.
 
 Hold on to the database name for Step 4. Wait until you have a repo URL before continuing to Step 2; if
 the user hasn't made the repo yet, walk them through the three steps above and pause until they do.
@@ -85,7 +85,7 @@ Update the cloned `database.toml` so `db_name` is the name from Step 1. It ships
 comment) intact:
 
 ```bash
-sed -i -E 's/^(db_name[[:space:]]*=[[:space:]]*)"[^"]*"/\1"<new-name>"/' <repo-dir>/database.toml
+sed -i '' 's/db_name = "[^"]*"/db_name = "<new-name>"/' <repo-dir>/database.toml
 grep '^db_name' <repo-dir>/database.toml   # confirm it now reads the user's name
 ```
 
@@ -105,3 +105,20 @@ separate skill:
 > astrodb-* skills run from inside it). The structure matches the template, and `db_name` is set to
 > `<new-name>`. The next step is to bring in a data table and run the `astro-parse-data-table` skill — let
 > me know when you have one and we'll parse it into this database.
+
+**If the repo name and database name don't match** (e.g. the repo is `test-astrodb` but `db_name` is
+`BdSurvey`), add this after the wrap-up:
+
+> One thing to consider: your repo is named `<repo-dir>` but the database is `<new-name>`. Would you like
+> to rename the GitHub repo to match? If so:
+> 1. Go to your repo on GitHub → Settings → rename it to `<new-name>`
+> 2. Let me know and I'll update your local git remote to point to the new URL:
+>    ```bash
+>    git remote set-url origin https://github.com/<your-username>/<new-name>
+>    ```
+>    I can also rename the local directory if you'd like (`mv <repo-dir> <new-name>`).
+>
+> This is optional — GitHub redirects the old URL for a while — but keeping them in sync avoids confusion
+> later.
+
+Only raise this if there is an actual mismatch. If the names already match, skip this entirely.
