@@ -105,10 +105,6 @@ Skills are designed to chain in order:
 - **`uv run`** is preferred over bare `python` to ensure the correct virtual environment.
 - **Database loading**: JSON-layout databases (astrodb-template-db) use `build_db_from_json(settings_file="database.toml")`; standalone `.sqlite` files use a direct connection.
 
-### Workspace Directories
-
-`skills/astrodb-build-schema-match-workspace/` and `skills/astrodb-setup-workspace/` are **not deployable skills** — they contain iteration and eval history from skill development. They have no top-level `SKILL.md`. Do not include them when installing skills into an agent.
-
 ### Evals Format
 
 Each `evals/evals.json` has `skill_name` and an array of `evals`, each with:
