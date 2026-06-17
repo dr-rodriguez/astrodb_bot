@@ -48,6 +48,14 @@
           "text": "Updates database.toml so db_name is set to the user-provided name (BdSurvey)"
         },
         {
+          "id": "eval2_asks_readme_description",
+          "text": "After cloning and updating db_name, asks the user for a description of their database to use in the README"
+        },
+        {
+          "id": "eval2_updates_readme",
+          "text": "Updates README.md: replaces the template title (astrodb-template-db) with the database name (BdSurvey) and replaces the generic description with the user-provided one"
+        },
+        {
           "id": "eval2_mentions_project_dir_after",
           "text": "In the wrap-up, tells the user the cloned repo directory is now their project directory for the next steps"
         },
@@ -144,8 +152,44 @@
           "text": "When asking for the database name, suggests aligning it with the repo name (test-astrodb) or notes the option to rename the repo to match whatever name they choose"
         },
         {
+          "id": "eval5_asks_readme_description",
+          "text": "After cloning and updating db_name, asks the user for a description of their database to use in the README"
+        },
+        {
           "id": "eval5_mentions_project_dir_after",
           "text": "In the wrap-up (after cloning), tells the user the cloned repo directory is now their project directory for subsequent steps"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "I want to set up a new astrodb called BrownDwarfs. My repo is https://github.com/kelle/test-astrodb . It's a catalog of nearby brown dwarf systems with spectral types, photometry, and parallaxes — for studying the L/T transition.",
+      "expected_output": "Clones https://github.com/kelle/test-astrodb without asking where to put it, verifies the template structure, updates database.toml so db_name is BrownDwarfs. For the README step, uses the description the user already provided ('a catalog of nearby brown dwarf systems with spectral types, photometry, and parallaxes — for studying the L/T transition') — or something very close — to update the README title and description without re-asking. Shows or confirms what was changed in the README. In the wrap-up, tells the user the repo directory is their project directory and points to the next step.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "eval6_clones_repo",
+          "text": "Clones https://github.com/kelle/test-astrodb without asking where to put it"
+        },
+        {
+          "id": "eval6_updates_db_name",
+          "text": "Updates database.toml so db_name is set to BrownDwarfs"
+        },
+        {
+          "id": "eval6_updates_readme_title",
+          "text": "Updates README.md: replaces the template title (astrodb-template-db) with BrownDwarfs"
+        },
+        {
+          "id": "eval6_updates_readme_description",
+          "text": "Updates README.md description to reflect the brown dwarf / L-T transition science the user described — does not leave the generic 'A template schema for astronomical databases' text"
+        },
+        {
+          "id": "eval6_no_redundant_description_ask",
+          "text": "Does not ask the user to re-describe their database — the description was already given in the prompt"
+        },
+        {
+          "id": "eval6_mentions_project_dir_after",
+          "text": "In the wrap-up, tells the user the cloned repo directory is now their project directory for subsequent steps"
         }
       ]
     }

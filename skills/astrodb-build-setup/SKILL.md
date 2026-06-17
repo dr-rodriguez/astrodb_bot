@@ -92,7 +92,47 @@ grep '^db_name' <repo-dir>/database.toml   # confirm it now reads the user's nam
 Editing the line by hand is fine too — the point is that `db_name` ends up matching the user's chosen
 name.
 
-## Step 5: Confirm, and point to what's next
+## Step 5: Update the README
+
+The cloned repo still has the template's generic README. Now that the database has a name and the user
+knows what it's for, it's a good moment to make the README theirs.
+
+Show the user the first few lines of the current README so they can see what's there:
+
+```bash
+head -12 <repo-dir>/README.md
+```
+
+Then ask:
+
+> The README still has the template's placeholder text. What's a one- or two-sentence description of
+> this database — what does it contain, and what science does it support? I'll update the title and
+> description so it reflects your work.
+
+Once they give you a description, update `README.md` in two places:
+
+1. **Title line** (line 1): replace `astrodb-template-db` with the database name from Step 1.
+2. **Description line**: replace `A template schema for astronomical databases.` with the user's
+   description.
+
+Remove the text that refers to the astrodb-utils package.
+
+Keep the link to the entity relationship diagram (ERD) image, and the credit line at the bottom that acknowledges the AstroDB Toolkit and template.
+
+Do this with the `Edit` tool (not `sed`) so the rest of the file — badges, links, the ERD image — stays
+intact.
+
+After editing, confirm with a brief summary:
+
+> README updated — title is now `<new-name>` and the description reflects your database.
+
+Also confirm that the user did not delete the credit line at the bottom of the README that acknowledges the AstroDB Toolkit and template: 
+This repository is based on the [astrodb-template](https://github.com/astrodbtoolkit/astrodb-template-db) template repository, which is part of the [AstroDB Toolkit](https://github.com/astrodbtoolkit).
+
+If the user skips this step or says "later" or "skip it," that's fine — just move on to Step 6 without
+pressing.
+
+## Step 6: Confirm, and point to what's next
 
 Tell the user the scaffold is ready: where the repo was cloned, that the structure checks out, and that
 `db_name` is set. This is also the natural point to bring up `<repo-dir>` as their project directory going
